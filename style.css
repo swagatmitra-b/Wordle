@@ -1,0 +1,47 @@
+@import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@1,600&display=swap');
+
+
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  max-width: 100%;
+}
+
+.container {
+  position: absolute;
+  top: 30%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.game-box {
+  position: relative;
+  top: 5rem;
+  display: grid;
+  grid-template-rows: repeat(5, 1fr);
+}
+
+.row {
+  display: flex;
+}
+
+input {
+  width: 3rem;
+  height: 3rem;
+  text-align: center;
+  font-size: 1.5rem;
+}
+
+header {
+  font-family: 'Lora', sans-serif;
+  font-size: 2.2rem;
+  font-weight: 600;
+  text-align: center;
+  margin-top: 1rem;
+  margin-bottom: 3rem;
+}
