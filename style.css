@@ -29,6 +29,7 @@ body {
 
 .row {
   display: flex;
+  gap: 0.05rem;
 }
 
 input {
@@ -36,6 +37,7 @@ input {
   height: 3rem;
   text-align: center;
   font-size: 1.5rem;
+  margin: 0.05rem;
 }
 
 header {

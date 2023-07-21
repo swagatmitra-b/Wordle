@@ -1,11 +1,13 @@
+import { Words } from "./words";
+
 const gameBox = document.querySelector(".game-box");
 const layout = document.querySelector(".layout");
-const h2 = document.querySelector('.container h2');
+const h2 = document.querySelector(".container h2");
 const guide = document.querySelector(".guide");
 document.querySelector("#cross").onclick = () => {
   guide.style.display = "none";
-}
-let actual = "elbow";
+};
+let actual = Words[Math.floor(Math.random() * Words.length)];
 let cache = new Map();
 const crossword = Array.from({ length: 6 }, () =>
   Array.from({ length: 5 }, () => 0)
@@ -18,9 +20,8 @@ const layoutArray = [
 
 h2.onclick = () => {
   guide.style.display = "block";
-  document.querySelector('#app').style.opacity = 1;
-}
-
+  document.querySelector("#app").style.opacity = 1;
+};
 
 crossword.forEach((row, i) => {
   gameBox.innerHTML += `
@@ -74,6 +75,7 @@ function typer(cell) {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
+  console.log(actual);
   const cells = Array.from(document.querySelectorAll("input"));
   cells.forEach((cell, i) => {
     i != 0 ? (cell.disabled = true) : null;
