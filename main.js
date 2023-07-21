@@ -10,7 +10,7 @@ document.querySelector("#cross").onclick = () => {
 let actual = Words[Math.floor(Math.random() * Words.length)].toLowerCase();
 let cache = new Map();
 const crossword = Array.from({ length: 6 }, () =>
-  Array.from({ length: 3 }, () => 0)
+  Array.from({ length: 5 }, () => 0)
 );
 const layoutArray = [
   [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
