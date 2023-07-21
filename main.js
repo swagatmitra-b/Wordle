@@ -7,7 +7,7 @@ const guide = document.querySelector(".guide");
 document.querySelector("#cross").onclick = () => {
   guide.style.display = "none";
 };
-let actual = Words[Math.floor(Math.random() * Words.length)];
+let actual = Words[Math.floor(Math.random() * Words.length)].toLowerCase();
 let cache = new Map();
 const crossword = Array.from({ length: 6 }, () =>
   Array.from({ length: 5 }, () => 0)
