@@ -75,3 +75,34 @@ h2 {
   cursor: pointer;
 }
 
+.guide {
+  position: absolute;
+  display: none;
+  background-color: rgb(254, 142, 142);
+  padding: 2rem;
+  bottom: 13rem;
+  left: 37%;
+  width: 28rem;
+  border-radius: 0.7rem;
+}
+
+p.instructions {
+  margin-top: 1rem;
+  font-size: 1.2rem;
+}
+
+#cross {
+  position: absolute;
+  left: 26.4rem;
+  bottom: 12rem;
+  cursor: pointer;
+}
+
+#blue {
+  color: rgb(61, 144, 233);
+}
+
+#green {
+  color: rgb(75, 147, 75);
+  margin-right: 3px;
+}

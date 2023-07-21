@@ -1,7 +1,10 @@
 const gameBox = document.querySelector(".game-box");
 const layout = document.querySelector(".layout");
-const h2 = document.querySelector('.h2');
+const h2 = document.querySelector('.container h2');
 const guide = document.querySelector(".guide");
+document.querySelector("#cross").onclick = () => {
+  guide.style.display = "none";
+}
 let actual = "elbow";
 let cache = new Map();
 const crossword = Array.from({ length: 6 }, () =>
@@ -12,6 +15,12 @@ const layoutArray = [
   [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
   [0, 0, 0, 0, 0, 0],
 ];
+
+h2.onclick = () => {
+  guide.style.display = "block";
+  document.querySelector('#app').style.opacity = 1;
+}
+
 
 crossword.forEach((row, i) => {
   gameBox.innerHTML += `
@@ -123,7 +132,7 @@ function checkWord(word, wordChars) {
             (cell) => cell.value === char
           );
           wrongPlaceCells.forEach((cell) => {
-            cell.style.backgroundColor = "#70D4F9 ";
+            cell.style.backgroundColor = "#70D4F9";
           });
         }
       }
