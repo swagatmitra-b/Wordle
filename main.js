@@ -1,18 +1,40 @@
 let actual = "honey";
 let cache = new Map();
 const gameBox = document.querySelector(".game-box");
+const layout = document.querySelector(".layout");
 const crossword = Array.from({ length: 6 }, () =>
-  Array.from({ length: 6 }, () => 0)
+  Array.from({ length: 5 }, () => 0)
 );
+const layoutArray = [
+  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+  [0, 0, 0, 0, 0, 0],
+];
 
 crossword.forEach((row, i) => {
   gameBox.innerHTML += `
-  <div class="row" id="${i + 1}>
+  <div class="row" id="${i + 1}">
   ${row
     .map(
       () => `
     <input type="text" class="cell" maxlength="1"/>
     `
+    )
+    .join("")}
+  </div>
+  `;
+});
+
+layoutArray.forEach((row, i) => {
+  layout.innerHTML += `
+  <div class="layout-row" id="${i + 1}">
+  ${row
+    .map(
+      (_, cellIndex) => `
+    <div class="alpha">
+      ${String.fromCharCode(97 + i * 10 + cellIndex)}
+    </div>
+  `
     )
     .join("")}
   </div>
@@ -34,17 +56,21 @@ function typer(cell) {
       cell.value = "";
       const prevCell = cell.previousElementSibling;
       if (prevCell !== null) {
-        prevCell.focus()
+        prevCell.focus();
       } else cell.focus();
     }
   });
 }
 
 document.addEventListener("DOMContentLoaded", () => {
+  const textArray = Array.from(document.querySelectorAll(".alpha")).map(
+    (key) => key.innerText
+  );
+  console.log(textArray);
   const cells = Array.from(document.querySelectorAll("input"));
   cells.forEach((cell, i) => {
     i != 0 ? (cell.disabled = true) : null;
-    typer(cell)
+    typer(cell);
   });
 });
 
@@ -61,22 +87,22 @@ function getWord(cell) {
   else return;
 
   if (cache.size == 0) return;
-  const nextCells = Array.from(nextParent.querySelectorAll("input"))
-  wordChars.forEach((input) => input.disabled = true);
+  const nextCells = Array.from(nextParent.querySelectorAll("input"));
+  wordChars.forEach((input) => (input.disabled = true));
   nextCells.forEach((cell, i) => {
-    i != 0 ? cell.disabled = true : cell.disabled = false;
-    cell.focus()
-    typer(cell)
-  });  
+    i != 0 ? (cell.disabled = true) : (cell.disabled = false);
+    cell.focus();
+    typer(cell);
+  });
 }
 
 function checkWord(word, wordChars) {
-  if (word == actual) { 
+  if (word == actual) {
     wordChars.forEach((cell) => {
       cell.style.backgroundColor = "#F9EB70";
       cell.disabled = true;
       cache.clear();
-    })
+    });
   } else {
     const [target, input] = [[...actual], [...word]];
     const similar = target.filter((char) => input.includes(char));
