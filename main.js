@@ -1,6 +1,6 @@
 import { Words } from "./words";
 
-const gameBox = document.querySelector(".game-box");
+const gameBox = document.querySelector(".game-box"); 
 const layout = document.querySelector(".layout");
 const h2 = document.querySelector(".container h2");
 const guide = document.querySelector(".guide");
@@ -10,7 +10,7 @@ document.querySelector("#cross").onclick = () => {
 let actual = Words[Math.floor(Math.random() * Words.length)].toLowerCase();
 let cache = new Map();
 const crossword = Array.from({ length: 6 }, () =>
-  Array.from({ length: 5 }, () => 0)
+  Array.from({ length: 3 }, () => 0)
 );
 const layoutArray = [
   [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
