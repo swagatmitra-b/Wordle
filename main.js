@@ -4,6 +4,7 @@ const gameBox = document.querySelector(".game-box");
 const layout = document.querySelector(".layout");
 const h2 = document.querySelector(".container h2");
 const guide = document.querySelector(".guide");
+const playAgain = document.querySelector('h3')
 document.querySelector("#cross").onclick = () => {
   guide.style.display = "none";
 };
@@ -22,6 +23,10 @@ h2.onclick = () => {
   guide.style.display = "block";
   document.querySelector("#app").style.opacity = 1;
 };
+
+playAgain.onclick = () => {
+  window.location.reload();
+}
 
 crossword.forEach((row, i) => {
   gameBox.innerHTML += `
@@ -110,6 +115,7 @@ function checkWord(word, wordChars) {
     wordChars.forEach((cell) => {
       cell.style.backgroundColor = "#F9EB70";
       cell.disabled = true;
+      playAgain.style.display = "block"
       cache.clear();
     });
   } else {
