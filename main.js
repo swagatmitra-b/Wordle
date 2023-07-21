@@ -51,28 +51,31 @@ document.addEventListener("DOMContentLoaded", () => {
 function getWord(cell) {
   let word = "";
   const parent = cell.parentElement;
+  const nextParent = parent.nextElementSibling;
   const wordChars = Array.from(parent.querySelectorAll("input"));
   wordChars.forEach((letter) => {
     word += letter.value;
   });
+
   if (word.length == 5) checkWord(word, wordChars);
   else return;
 
-  const nextParent = parent.nextElementSibling
+  if (cache.size == 0) return;
   const nextCells = Array.from(nextParent.querySelectorAll("input"))
   wordChars.forEach((input) => input.disabled = true);
   nextCells.forEach((cell, i) => {
     i != 0 ? cell.disabled = true : cell.disabled = false;
     cell.focus()
     typer(cell)
-  });
-  
+  });  
 }
 
 function checkWord(word, wordChars) {
-  if (word == actual) {
+  if (word == actual) { 
     wordChars.forEach((cell) => {
-      cell.style.backgroundColor = "#F9EB70"
+      cell.style.backgroundColor = "#F9EB70";
+      cell.disabled = true;
+      cache.clear();
     })
   } else {
     const [target, input] = [[...actual], [...word]];
