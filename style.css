@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@1,600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;1,600&display=swap');
 
 
 
@@ -14,9 +14,10 @@ body {
 
 .container {
   position: absolute;
-  top: 30%;
+  top: 33%;
   left: 50%;
   transform: translate(-50%, -50%);
+  text-align: center;
 }
 
 .game-box {
@@ -60,10 +61,17 @@ header {
 }
 
 .alpha {
-  height: 1.8rem;
-  width: 1.8rem;
+  height: 2rem;
+  width: 2rem;
   border: 2px solid black;
   margin: 5px;
   text-align: center;
   padding-top: 3px;
 }
+
+h2 {
+  font-family: 'Lora', sans-serif;
+  font-weight: 400;
+  cursor: pointer;
+}
+

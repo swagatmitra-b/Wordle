@@ -1,7 +1,9 @@
-let actual = "honey";
-let cache = new Map();
 const gameBox = document.querySelector(".game-box");
 const layout = document.querySelector(".layout");
+const h2 = document.querySelector('.h2');
+const guide = document.querySelector(".guide");
+let actual = "elbow";
+let cache = new Map();
 const crossword = Array.from({ length: 6 }, () =>
   Array.from({ length: 5 }, () => 0)
 );
@@ -63,10 +65,6 @@ function typer(cell) {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
-  const textArray = Array.from(document.querySelectorAll(".alpha")).map(
-    (key) => key.innerText
-  );
-  console.log(textArray);
   const cells = Array.from(document.querySelectorAll("input"));
   cells.forEach((cell, i) => {
     i != 0 ? (cell.disabled = true) : null;
@@ -106,6 +104,7 @@ function checkWord(word, wordChars) {
   } else {
     const [target, input] = [[...actual], [...word]];
     const similar = target.filter((char) => input.includes(char));
+    greyCells(input, target);
     console.log(target, similar, input);
     input.forEach((char, i) => {
       if (char === target[i]) {
@@ -129,5 +128,17 @@ function checkWord(word, wordChars) {
         }
       }
     });
+  }
+}
+
+function greyCells(inputArr, target) {
+  const filtered = inputArr.filter((char) => !target.includes(char));
+  const keyArray = Array.from(document.querySelectorAll(".alpha"));
+  for (const char of filtered) {
+    for (const letter of keyArray) {
+      if (letter.innerText == char) {
+        letter.style.backgroundColor = "grey";
+      }
+    }
   }
 }
