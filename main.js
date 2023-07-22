@@ -99,7 +99,7 @@ function getWord(cell) {
   const nextParent = parent.nextElementSibling;
   const wordChars = Array.from(parent.querySelectorAll("input"));
   wordChars.forEach((letter) => {
-    word += letter.value;
+    word += letter.value.toLowerCase();
   });
 
   if (word.length == 5) checkWord(word, wordChars);
