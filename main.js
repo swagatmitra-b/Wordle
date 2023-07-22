@@ -83,7 +83,7 @@ document.addEventListener("DOMContentLoaded", () => {
   console.log(actual);
   const cells = Array.from(document.querySelectorAll("input"));
   cells.forEach((cell, i) => {
-    i != 0 ? (cell.disabled = true) : null;
+    i != 0 ? (cell.disabled = true) : cell.focus();
     typer(cell);
   });
 });
