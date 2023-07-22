@@ -1,13 +1,13 @@
 import { Words } from "./words";
 
-const gameBox = document.querySelector(".game-box"); 
+const gameBox = document.querySelector(".game-box");
 const layout = document.querySelector(".layout");
 const h2 = document.querySelector(".container h2");
 const guide = document.querySelector(".guide");
-const playAgain = document.querySelector('h3')
-document.querySelector("#cross").onclick = () => {
-  guide.style.display = "none";
-};
+const playAgain = document.querySelector("h3.again");
+const lose = document.querySelector("h3.lose");
+const answer = document.querySelector("h3.answer");
+
 let actual = Words[Math.floor(Math.random() * Words.length)].toLowerCase();
 let cache = new Map();
 const crossword = Array.from({ length: 6 }, () =>
@@ -19,14 +19,19 @@ const layoutArray = [
   [0, 0, 0, 0, 0, 0],
 ];
 
-h2.onclick = () => {
+h2.onclick = (e) => {
+  e.stopPropagation();
   guide.style.display = "block";
-  document.querySelector("#app").style.opacity = 1;
+  document.addEventListener("click", (e) => {
+    if (!e.target.closest(".guide")) {
+      guide.style.display = "none";
+    }
+  });
 };
 
 playAgain.onclick = () => {
   window.location.reload();
-}
+};
 
 crossword.forEach((row, i) => {
   gameBox.innerHTML += `
@@ -102,7 +107,12 @@ function getWord(cell) {
 
   if (cache.size == 0) return;
   wordChars.forEach((input) => (input.disabled = true));
-  if (!nextParent) return;
+  if (!nextParent) {
+    lose.style.display = "block";
+    playAgain.style.display = "block";
+    answer.innerHTML = `The answer was <strong style="color: #FF8C00">${actual}<strong>`;
+    return;
+  }
   const nextCells = Array.from(nextParent.querySelectorAll("input"));
   nextCells.forEach((cell, i) => {
     i != 0 ? (cell.disabled = true) : (cell.disabled = false);
@@ -116,7 +126,7 @@ function checkWord(word, wordChars) {
     wordChars.forEach((cell) => {
       cell.style.backgroundColor = "#F9EB70";
       cell.disabled = true;
-      playAgain.style.display = "block"
+      playAgain.style.display = "block";
       cache.clear();
     });
   } else {

@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;1,600&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;1,600&display=swap");
 
 * {
   margin: 0;
@@ -39,7 +39,7 @@ input {
 }
 
 header {
-  font-family: 'Lora', sans-serif;
+  font-family: "Lora", sans-serif;
   font-size: 2.2rem;
   font-weight: 600;
   text-align: center;
@@ -50,7 +50,7 @@ header {
 .layout {
   position: relative;
   display: grid;
-  grid-template-rows: repeat(3, 1fr); 
+  grid-template-rows: repeat(3, 1fr);
   top: 23rem;
   right: 30rem;
 }
@@ -70,7 +70,7 @@ header {
 }
 
 h2 {
-  font-family: 'Lora', sans-serif;
+  font-family: "Lora", sans-serif;
   font-weight: 400;
   cursor: pointer;
 }
@@ -92,20 +92,31 @@ p.instructions {
   line-height: 1.5rem;
 }
 
-h3 { 
+h3.again {
   position: absolute;
-  top: 35rem;
+  top: 38rem;
   left: 5rem;
-  font-family: 'Lora', sans-serif;
+  font-family: "Lora", sans-serif;
   cursor: pointer;
   display: none;
 }
 
-#cross {
+h3.lose {
   position: absolute;
-  left: 26.6rem;
-  bottom: 12.6rem;
-  cursor: pointer;
+  font-size: 1rem;
+  top: 34rem;
+  left: 3.4rem;
+  font-family: "Lora", sans-serif;
+  display: none;
+}
+
+h3.answer {
+  position: absolute;
+  font-size: 1rem;
+  top: 35.5rem;
+  left: 2.8rem;
+  font-family: "Lora", sans-serif;
+  color: dark;
 }
 
 #blue {
