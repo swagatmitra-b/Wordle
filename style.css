@@ -130,3 +130,12 @@ h3.answer {
   color: rgb(75, 147, 75);
   margin-right: 3px;
 }
+
+@media (max-width: 380px) {
+  .guide {
+    position: absolute;
+    width: 20rem;
+    left: 2rem;
+    bottom: 7.2rem;
+  }
+}
