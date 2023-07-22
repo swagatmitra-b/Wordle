@@ -131,7 +131,7 @@ h3.answer {
   margin-right: 3px;
 }
 
-@media (max-width: 380px) {
+@media (max-width: 417px) {
   .guide {
     position: absolute;
     width: 20rem;
