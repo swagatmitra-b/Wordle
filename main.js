@@ -101,8 +101,9 @@ function getWord(cell) {
   else return;
 
   if (cache.size == 0) return;
-  const nextCells = Array.from(nextParent.querySelectorAll("input"));
   wordChars.forEach((input) => (input.disabled = true));
+  if (!nextParent) return;
+  const nextCells = Array.from(nextParent.querySelectorAll("input"));
   nextCells.forEach((cell, i) => {
     i != 0 ? (cell.disabled = true) : (cell.disabled = false);
     cell.focus();
@@ -120,9 +121,7 @@ function checkWord(word, wordChars) {
     });
   } else {
     const [target, input] = [[...actual], [...word]];
-    const similar = target.filter((char) => input.includes(char));
     greyCells(input, target);
-    console.log(target, similar, input);
     input.forEach((char, i) => {
       if (char === target[i]) {
         const rightPlaceCells = wordChars.filter((cell) => cell.value === char);
