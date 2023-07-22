@@ -126,6 +126,8 @@ function checkWord(word, wordChars) {
     wordChars.forEach((cell) => {
       cell.style.backgroundColor = "#F9EB70";
       cell.disabled = true;
+      answer.innerHTML = `You guessed right!`
+      answer.style.left = '3.5rem';
       playAgain.style.display = "block";
       cache.clear();
     });
