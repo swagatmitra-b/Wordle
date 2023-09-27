@@ -1,4 +1,5 @@
-import { Words } from "./words";
+import { Words } from "./words.js";
+
 
 const gameBox = document.querySelector(".game-box");
 const layout = document.querySelector(".layout");
@@ -7,6 +8,9 @@ const guide = document.querySelector(".guide");
 const playAgain = document.querySelector("h3.again");
 const lose = document.querySelector("h3.lose");
 const answer = document.querySelector("h3.answer");
+var body = document.body;
+
+const how_to_play=document.getElementById("how_to_play");
 
 let actual = Words[Math.floor(Math.random() * Words.length)].toLowerCase();
 let cache = new Map();
@@ -22,9 +26,14 @@ const layoutArray = [
 h2.onclick = (e) => {
   e.stopPropagation();
   guide.style.display = "block";
+  body.style.backgroundColor ="rgb(0, 0,0,0.8)";
+  body.style.cursor = "pointer"; 
+  
   document.addEventListener("click", (e) => {
     if (!e.target.closest(".guide")) {
       guide.style.display = "none";
+      body.style.backgroundColor = "white";
+   
     }
   });
 };
