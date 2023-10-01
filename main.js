@@ -8,6 +8,7 @@ const guide = document.querySelector(".guide");
 const playAgain = document.querySelector("h3.again");
 const lose = document.querySelector("h3.lose");
 const answer = document.querySelector("h3.answer");
+const container=document.getElementById('Contai');
 var body = document.body;
 
 const how_to_play=document.getElementById("how_to_play");
@@ -26,14 +27,16 @@ const layoutArray = [
 h2.onclick = (e) => {
   e.stopPropagation();
   guide.style.display = "block";
-  body.style.backgroundColor ="rgb(0, 0,0,0.8)";
+  body.style.backgroundColor ="rgb(0, 0,0,0.6)";
   body.style.cursor = "pointer"; 
-  
+  layout.style.filter="blur(5px)";
+  container.style.filter="blur(5px)";
   document.addEventListener("click", (e) => {
     if (!e.target.closest(".guide")) {
       guide.style.display = "none";
       body.style.backgroundColor = "white";
-   
+      layout.style.filter="blur(0)";
+      container.style.filter="blur(0px)";
     }
   });
 };

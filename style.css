@@ -139,10 +139,3 @@ h3.answer {
     bottom: 7.2rem;
   }
 }
-#How_to_play:hover{
-   border:2px solid black;
-  cursor: pointer;
-  height: 50px;
-  background-color: rgb(212, 195, 98);
-  color:black;
-}
