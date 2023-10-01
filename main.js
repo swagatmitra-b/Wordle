@@ -9,10 +9,7 @@ const playAgain = document.querySelector("h3.again");
 const lose = document.querySelector("h3.lose");
 const answer = document.querySelector("h3.answer");
 const container=document.getElementById('Contai');
-var body = document.body;
-
-const how_to_play=document.getElementById("how_to_play");
-
+const body = document.body;
 let actual = Words[Math.floor(Math.random() * Words.length)].toLowerCase();
 let cache = new Map();
 const crossword = Array.from({ length: 6 }, () =>
